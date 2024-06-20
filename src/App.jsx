@@ -14,6 +14,11 @@ function App() {
     setPosts([...posts, newPost]);
   };
 
+  const handleDeletePost = (index) => {
+    const newPosts = posts.filter((_, i) => i !== index);
+    setPosts(newPosts);
+  };
+
   return (
     <Router>
       <Box p={4}>
@@ -27,7 +32,7 @@ function App() {
           />
         </Flex>
       <Routes>
-        <Route exact path="/" element={<Index posts={posts} />} />
+        <Route exact path="/" element={<Index posts={posts} onDeletePost={handleDeletePost} />} />
         <Route path="/add-post" element={<AddPost onAddPost={handleAddPost} />} />
       </Routes>
       </Box>

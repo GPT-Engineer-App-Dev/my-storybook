@@ -2,7 +2,7 @@ import { Container, Text, VStack, Heading, Box, Image, Link, Button, useColorMod
 import { FaTwitter, FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link as RouterLink } from "react-router-dom";
 
-const Index = ({ posts }) => {
+const Index = ({ posts, onDeletePost }) => {
   const bg = useColorModeValue("gray.100", "gray.700");
 
   return (
@@ -21,6 +21,7 @@ const Index = ({ posts }) => {
             <Box key={index} p={5} shadow="md" borderWidth="1px" borderRadius="md" width="100%">
               <Heading fontSize="xl">{post.title}</Heading>
               <Text mt={4}>{post.content}</Text>
+              <Button colorScheme="red" onClick={() => onDeletePost(index)}>Delete</Button>
             </Box>
           ))}
         </VStack>
